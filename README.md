@@ -1,4 +1,4 @@
-# Exploiting Temporal Relationships in Video MomentLocalization with Natural Language
+# Exploiting Temporal Relationships in Video Moment Localization with Natural Language
 
 
 Songyang Zhang, Jinsong Su, Jiebo Luo, Exploiting Temporal Relationships in Video Moment Localization with Natural Language, In ACM Multimedia 2019
