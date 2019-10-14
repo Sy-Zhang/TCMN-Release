@@ -141,7 +141,7 @@ The result of the testing set will be output to the ``results`` folder.
 You can also modify the model path in ``test.py`` to your trained model.
 
 ### Model Ensemble
-Modify the result file name in late_fusion.py and then:
+Run the following command to get the ensemble result:
 ```
 python late_fusion.py
 ```
