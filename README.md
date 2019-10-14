@@ -17,44 +17,6 @@ In this work,
 
 ## Main Results
 
-##### Main result on TEMPO-TL
-
-<table>
-  <tr>
-    <td colspan="2" align="center">DiDeMo</td>
-    <td colspan="2" align="center">Before</td>
-    <td colspan="2" align="center">After</td>
-    <td colspan="2" align="center">Then</td>
-    <td colspan="3" align="center">Average</td>
-  </tr>
-  <tr>
-    <td>R@1</td>
-    <td>mIoU</td>
-    <td>R@1</td>
-    <td>mIoU</td>
-    <td>R@1</td>
-    <td>mIoU</td>
-    <td>R@1</td>
-    <td>mIoU</td>
-    <td>R@1</td>
-    <td>R@5</td>
-    <td>mIoU</td>
-  </tr>
-  <tr>
-    <td>28.90</td>
-    <td>41.03</td>
-    <td>37.68</td>
-    <td>44.78</td>
-    <td>32.61</td>
-    <td>42.77</td>
-    <td>31.16</td>
-    <td>55.46</td>
-    <td>32.85</td>
-    <td>78.73</td>
-    <td>46.01</td>
-  </tr>
-</table>
-
 ##### Main result on TEMPO-HL
 <table>
   <tr>
@@ -97,6 +59,44 @@ In this work,
   </tr>
 </table>
 
+##### Main result on TEMPO-TL
+
+<table>
+  <tr>
+    <td colspan="2" align="center">DiDeMo</td>
+    <td colspan="2" align="center">Before</td>
+    <td colspan="2" align="center">After</td>
+    <td colspan="2" align="center">Then</td>
+    <td colspan="3" align="center">Average</td>
+  </tr>
+  <tr>
+    <td>R@1</td>
+    <td>mIoU</td>
+    <td>R@1</td>
+    <td>mIoU</td>
+    <td>R@1</td>
+    <td>mIoU</td>
+    <td>R@1</td>
+    <td>mIoU</td>
+    <td>R@1</td>
+    <td>R@5</td>
+    <td>mIoU</td>
+  </tr>
+  <tr>
+    <td>28.90</td>
+    <td>41.03</td>
+    <td>37.68</td>
+    <td>44.78</td>
+    <td>32.61</td>
+    <td>42.77</td>
+    <td>31.16</td>
+    <td>55.46</td>
+    <td>32.85</td>
+    <td>78.73</td>
+    <td>46.01</td>
+  </tr>
+</table>
+
 ## Quick Start
 
 ### Prerequisites
@@ -121,15 +121,24 @@ You can also run setup.sh to have a quick setup.
 
 ```
 CUDA_VISIBLE_DEVICES=0 python train.py -feature_type_0 rgb -feature_type_1 rgb -dataset_name TEMPO_HL -gpu 0 -vis_hidden_size 500 -lang_hidden_size 600 -att_hidden_size 250 -hidden_size 250 -batch_size 16 -verbose
+CUDA_VISIBLE_DEVICES=1 python train.py -feature_type_0 flow -feature_type_1 rgb -dataset_name TEMPO_HL -gpu 0 -vis_hidden_size 500 -lang_hidden_size 600 -att_hidden_size 250 -hidden_size 250 -batch_size 16 -verbose
+CUDA_VISIBLE_DEVICES=2 python train.py -feature_type_0 rgb -feature_type_1 flow -dataset_name TEMPO_HL -gpu 0 -vis_hidden_size 500 -lang_hidden_size 600 -att_hidden_size 250 -hidden_size 250 -batch_size 16 -verbose
+CUDA_VISIBLE_DEVICES=3 python train.py -feature_type_0 flow -feature_type_1 flow -dataset_name TEMPO_HL -gpu 0 -vis_hidden_size 500 -lang_hidden_size 600 -att_hidden_size 250 -hidden_size 250 -batch_size 16 -verbose
 ```
 
 ### Testing Single Temporal Compositional Modular Network
+We provide our model [here]().
 
-Modify the testing model name in test-full.py and then:
+Please download them first, unzip to the ``checkpoints`` folder, and then run the following command:
 ```
-CUDA_VISIBLE_DEVICES=0 python test-full.py -feature_type_0 flow -feature_type_1 flow -batch_size 16 -hidden_size 250 -att_hidden_size 250 -vis_hidden_size 500 -lang_hidden_size 500 -datasset_name TEMPO_HL -split test -verbose
+CUDA_VISIBLE_DEVICES=0 python test.py -feature_type_0 rgb -feature_type_1 rgb -batch_size 16 -hidden_size 250 -att_hidden_size 250 -vis_hidden_size 500 -lang_hidden_size 500 -dataset_name TEMPO_HL -split test -verbose
+CUDA_VISIBLE_DEVICES=1 python test.py -feature_type_0 flow -feature_type_1 rgb -batch_size 16 -hidden_size 250 -att_hidden_size 250 -vis_hidden_size 500 -lang_hidden_size 500 -dataset_name TEMPO_HL -split test -verbose
+CUDA_VISIBLE_DEVICES=2 python test.py -feature_type_0 rgb -feature_type_1 flow -batch_size 16 -hidden_size 250 -att_hidden_size 250 -vis_hidden_size 500 -lang_hidden_size 500 -dataset_name TEMPO_HL -split test -verbose
+CUDA_VISIBLE_DEVICES=3 python test.py -feature_type_0 flow -feature_type_1 flow -batch_size 16 -hidden_size 250 -att_hidden_size 250 -vis_hidden_size 500 -lang_hidden_size 500 -dataset_name TEMPO_HL -split test -verbose
 ```
-The result of the testing set will be output to the 'results/' folder.
+The result of the testing set will be output to the ``results`` folder.
+
+You can also modify the model path in ``test.py`` to your trained model.
 
 ### Model Ensemble
 Modify the result file name in late_fusion.py and then:
