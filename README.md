@@ -108,7 +108,7 @@ There are a few dependencies to run the code. The major libraries we use are
 - [Berkeley Neural Parser](https://github.com/nikitakit/self-attentive-parser)
 - [torchtext](https://github.com/pytorch/text)
 
-The codebase is written in Python3. We recommend the [Anaconda](https://www.anaconda.com/) Python distribution. 
+The codes are written in Python3.
 
 ### Data Preparation
 
