@@ -100,3 +100,39 @@ In this work,
 ## Quick Start
 
 ### Prerequisites
+
+There are a few dependencies to run the code. The major libraries we use are
+
+- [pytorch](https://pytorch.org)
+- [nltk](https://www.nltk.org/)
+- [Berkeley Neural Parser](https://github.com/nikitakit/self-attentive-parser)
+- [torchtext](https://github.com/pytorch/text)
+
+The codebase is written in Python3. We recommend the [Anaconda](https://www.anaconda.com/) Python distribution. 
+
+### Data Preparation
+
+All video features are provided by [DiDeMo](https://github.com/LisaAnne/LocalizingMoments) and [TEMPO](https://github.com/LisaAnne/TemporalLanguageRelease).
+Please download the feature under their instructions.
+
+You can also run setup.sh to have a quick setup.
+
+### Training Single Temporal Compositional Modular Network
+
+```
+CUDA_VISIBLE_DEVICES=0 python train.py -feature_type_0 rgb -feature_type_1 rgb -dataset_name TEMPO_HL -gpu 0 -vis_hidden_size 500 -lang_hidden_size 600 -att_hidden_size 250 -hidden_size 250 -batch_size 16 -verbose
+```
+
+### Testing Single Temporal Compositional Modular Network
+
+Modify the testing model name in test-full.py and then:
+```
+CUDA_VISIBLE_DEVICES=0 python test-full.py -feature_type_0 flow -feature_type_1 flow -batch_size 16 -hidden_size 250 -att_hidden_size 250 -vis_hidden_size 500 -lang_hidden_size 500 -datasset_name TEMPO_HL -split test -verbose
+```
+The result of the testing set will be output to the 'results/' folder.
+
+### Model Ensemble
+Modify the result file name in late_fusion.py and then:
+```
+python late_fusion.py
+```
