@@ -124,7 +124,7 @@ CUDA_VISIBLE_DEVICES=3 python train.py -feature_type_0 flow -feature_type_1 flow
 ```
 
 ### Testing Single Temporal Compositional Modular Network
-Our model is provided [here](https://uofr-my.sharepoint.com/:u:/g/personal/szhang83_ur_rochester_edu/EXASlpqtG5FCm0UFIAEbVJMBSMjxDnU82Mrjp5PGVW1DIg?e=0NEHvd).
+Our model is provided [here](https://www.dropbox.com/s/5t2gce9n30k8q2m/checkpoints.zip?dl=0).
 
 Please download them first, unzip to the ``checkpoints`` folder, and then run the following command:
 ```
