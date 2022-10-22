@@ -112,7 +112,7 @@ The codes are written in Python3.
 
 ### Data Preparation
 
-All video features are downloaded from [DiDeMo](https://github.com/LisaAnne/LocalizingMoments) and [TEMPO](https://github.com/LisaAnne/TemporalLanguageRelease). We also provide a backup [here](https://drive.google.com/drive/folders/1oUo0_OXpMbEceEf5BO7LlBRZyUahz5Va?usp=sharing).
+All video features are downloaded from [DiDeMo](https://github.com/LisaAnne/LocalizingMoments) and [TEMPO](https://github.com/LisaAnne/TemporalLanguageRelease). We also provide a backup [here](https://www.dropbox.com/sh/tcbikjgya6bmw1y/AABuXUiMmMLJi3Kjfx8a_0p4a?dl=0).
 
 ### Training Single Temporal Compositional Modular Network
 
